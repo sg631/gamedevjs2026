@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://dpkeuxou5wde6"]
+
+[ext_resource type="Texture2D" uid="uid://bebueyqjllnio" path="res://player_spritesheet.png" id="1_jfuqs"]
+[ext_resource type="Script" uid="uid://uh2biaxcilet" path="res://full_player.gd" id="1_tx6sp"]
+[ext_resource type="Texture2D" uid="uid://dlleemce0t0n1" path="res://player_front.png" id="2_s3nur"]
+[ext_resource type="Texture2D" uid="uid://ccpeyxsuhqyw1" path="res://player_back.png" id="4_l74wa"]
+[ext_resource type="Texture2D" uid="uid://bloueyyu81h85" path="res://module_tilemap.png" id="5_l74wa"]
+[ext_resource type="Script" uid="uid://cgua4nba5yxco" path="res://modules_adder.gd" id="6_lvgbx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx6sp"]
+atlas = ExtResource("1_jfuqs")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhcil"]
+atlas = ExtResource("1_jfuqs")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3nur"]
+atlas = ExtResource("1_jfuqs")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l74wa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s3nur")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx6sp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhcil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3nur")
+}],
+"loop": true,
+"name": &"walk_side",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_l74wa")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvgbx"]
+size = Vector2(16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lvgbx"]
+texture = ExtResource("5_l74wa")
+0:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_s3nur"]
+sources/0 = SubResource("TileSetAtlasSource_lvgbx")
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=893198912]
+script = ExtResource("1_tx6sp")
+
+[node name="AnimSprite" type="AnimatedSprite2D" parent="." unique_id=360736494]
+sprite_frames = SubResource("SpriteFrames_l74wa")
+animation = &"walk_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=202195938]
+shape = SubResource("RectangleShape2D_lvgbx")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1018385949]
+zoom = Vector2(4.39, 4.39)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1781316307]
+texture_filter = 3
+position = Vector2(8, 8)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 0, 0, 1, 0, 0, 0)
+tile_set = SubResource("TileSet_s3nur")
+script = ExtResource("6_lvgbx")
+
+[node name="PreviewSprite" type="Sprite2D" parent="TileMapLayer" unique_id=1910737914]
+texture = ExtResource("4_l74wa")
