@@ -1,1 +1,0 @@
-# gamedevjs2026
