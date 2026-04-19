@@ -73,11 +73,6 @@ animation = &"walk_down"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=202195938]
 shape = SubResource("RectangleShape2D_lvgbx")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1018385949]
-zoom = Vector2(4.39, 4.39)
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
-
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1781316307]
 texture_filter = 3
 position = Vector2(8, 8)
@@ -86,4 +81,10 @@ tile_set = SubResource("TileSet_s3nur")
 script = ExtResource("6_lvgbx")
 
 [node name="PreviewSprite" type="Sprite2D" parent="TileMapLayer" unique_id=1910737914]
+modulate = Color(1, 1, 1, 0.28235295)
 texture = ExtResource("4_l74wa")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1941946870]
+zoom = Vector2(3.01, 3.01)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true

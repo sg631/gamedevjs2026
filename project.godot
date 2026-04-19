@@ -19,6 +19,14 @@ run/main_scene="uid://d0ij6v8x8kshg"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://bsvoruj0wufs7"
+
+[autoload]
+
+AudioAnalyzer="*uid://ccgp436y20i5g"
+
 [input]
 
 move_left={
@@ -61,8 +69,13 @@ remove_tile={
 ]
 }
 
+[physics]
+
+common/physics_interpolation=true
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 anti_aliasing/screen_space_roughness_limiter/enabled=false
+environment/defaults/default_clear_color=Color(0.5948039, 0.6164269, 0.66514707, 1)
 2d/snap/snap_2d_transforms_to_pixel=true

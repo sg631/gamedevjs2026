@@ -1,9 +1,55 @@
 [gd_scene format=3 uid="uid://ddvegdfskx2a2"]
 
-[node name="UI" type="Control"]
+[ext_resource type="FontFile" uid="uid://dvw6pgbk4cmae" path="res://fonts/Special_Gothic_Condensed_One/SpecialGothicCondensedOne-Regular.ttf" id="1_2ppmm"]
+
+[sub_resource type="Theme" id="Theme_w37m7"]
+default_font = ExtResource("1_2ppmm")
+
+[node name="UI" type="Control" unique_id=685042840]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(-576, 324)
+
+[node name="Label" type="Label" parent="." unique_id=1747566609]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.5
+offset_right = 82.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = SubResource("Theme_w37m7")
+theme_override_colors/font_color = Color(0.19939885, 0.2556209, 0.26938882, 1)
+theme_override_fonts/font = ExtResource("1_2ppmm")
+theme_override_font_sizes/font_size = 50
+text = "Enemies are coming.."
+horizontal_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=1331961536]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 196.0
+offset_right = 289.0
+offset_bottom = 466.0
+current_tab = 0
+
+[node name="Structures" type="Control" parent="TabContainer" unique_id=1734622808]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Modules" type="Control" parent="TabContainer" unique_id=936349254]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ItemList" type="ItemList" parent="TabContainer" unique_id=464158652]
+visible = false
+layout_mode = 2
+item_count = 1
+item_0/text = "Ba"
+metadata/_tab_index = 2

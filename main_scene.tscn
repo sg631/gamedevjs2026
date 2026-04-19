@@ -2,15 +2,25 @@
 
 [ext_resource type="PackedScene" uid="uid://ddvegdfskx2a2" path="res://main_ui.tscn" id="1_0f027"]
 [ext_resource type="PackedScene" uid="uid://dpkeuxou5wde6" path="res://full_player.tscn" id="2_2c62f"]
+[ext_resource type="AudioStream" uid="uid://byy5dcpnbdqru" path="res://gdjs_breakcore1.wav" id="3_gyfs4"]
+[ext_resource type="PackedScene" uid="uid://bmd7v3nqo8kcq" path="res://basic_enemy.tscn" id="4_d5x1h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2c62f"]
 
+[sub_resource type="Environment" id="Environment_gyfs4"]
+background_mode = 3
+background_energy_multiplier = 3.32
+glow_enabled = true
+glow_bloom = 0.32
+glow_blend_mode = 0
+glow_hdr_threshold = 2.33
+glow_hdr_scale = 2.57
+glow_map_strength = 0.32
+adjustment_enabled = true
+
+[sub_resource type="Compositor" id="Compositor_gyfs4"]
+
 [node name="MainScene" type="Node" unique_id=1582753649]
-
-[node name="UI" parent="." unique_id=1151688381 instance=ExtResource("1_0f027")]
-
-[node name="FullPlayer" parent="." unique_id=493076824 instance=ExtResource("2_2c62f")]
-position = Vector2(177, 74)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1975741540]
 position = Vector2(161, 121.99999)
@@ -18,3 +28,22 @@ scale = Vector2(1.025, 1.025)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2128431882]
 shape = SubResource("RectangleShape2D_2c62f")
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=783582656]
+stream = ExtResource("3_gyfs4")
+volume_db = 3.253
+pitch_scale = 0.75
+autoplay = true
+bus = &"Music"
+
+[node name="Player" parent="." unique_id=893198912 instance=ExtResource("2_2c62f")]
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=2037959742]
+
+[node name="UI" parent="UILayer" unique_id=685042840 instance=ExtResource("1_0f027")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=722766755]
+environment = SubResource("Environment_gyfs4")
+compositor = SubResource("Compositor_gyfs4")
+
+[node name="RigidBody2D" parent="." unique_id=1416571759 instance=ExtResource("4_d5x1h")]

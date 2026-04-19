@@ -9,9 +9,9 @@ func _process(_delta: float) -> void:
 	
 	# Update tint based on neighbor check
 	if _has_orthogonal_neighbor(tile_coords):
-		$PreviewSprite.modulate = Color.GREEN
+		$PreviewSprite.modulate = Color.from_rgba8(170, 255, 170, 127)
 	else:
-		$PreviewSprite.modulate = Color.RED
+		$PreviewSprite.modulate = Color.from_rgba8(255, 170, 170, 127)
 
 
 func _input(event):
