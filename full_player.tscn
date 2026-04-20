@@ -58,12 +58,17 @@ size = Vector2(16, 16)
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lvgbx"]
 texture = ExtResource("5_l74wa")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_s3nur"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_lvgbx")
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=893198912]
+motion_mode = 1
 script = ExtResource("1_tx6sp")
 
 [node name="AnimSprite" type="AnimatedSprite2D" parent="." unique_id=360736494]
@@ -78,6 +83,7 @@ texture_filter = 3
 position = Vector2(8, 8)
 tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 0, 0, 1, 0, 0, 0)
 tile_set = SubResource("TileSet_s3nur")
+use_kinematic_bodies = true
 script = ExtResource("6_lvgbx")
 
 [node name="PreviewSprite" type="Sprite2D" parent="TileMapLayer" unique_id=1910737914]

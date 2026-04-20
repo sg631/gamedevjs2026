@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var max_speed: float = 30.0
 @export var acceleration: float = 10.0 # Higher = faster takeoff
 @export var friction: float = 15.0     # Higher = faster stop
-@export var stop_distance: float = 50.0 # Prevents jittering at the target
+@export var stop_distance: float = 5.0 # Prevents jittering at the target
 
 @onready var player = get_parent().get_node("Player")
 
