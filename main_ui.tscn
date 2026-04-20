@@ -46,10 +46,3 @@ metadata/_tab_index = 0
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
-
-[node name="ItemList" type="ItemList" parent="TabContainer" unique_id=464158652]
-visible = false
-layout_mode = 2
-item_count = 1
-item_0/text = "Ba"
-metadata/_tab_index = 2

@@ -47,3 +47,4 @@ environment = SubResource("Environment_gyfs4")
 compositor = SubResource("Compositor_gyfs4")
 
 [node name="RigidBody2D" parent="." unique_id=1416571759 instance=ExtResource("4_d5x1h")]
+position = Vector2(136, 30)
