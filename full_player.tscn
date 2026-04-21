@@ -85,6 +85,7 @@ tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 25
 tile_set = SubResource("TileSet_s3nur")
 use_kinematic_bodies = true
 script = ExtResource("6_lvgbx")
+is_editing = true
 
 [node name="PreviewSprite" type="Sprite2D" parent="TileMapLayer" unique_id=1910737914]
 modulate = Color(1, 1, 1, 0.28235295)
