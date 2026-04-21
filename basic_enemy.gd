@@ -5,7 +5,9 @@ extends CharacterBody2D
 @export var friction: float = 15.0     # Higher = faster stop
 @export var stop_distance: float = 5.0 # Prevents jittering at the target
 
-@onready var player = get_parent().get_node("Player")
+@onready var player = $/root/MainScene/Player
+
+signal removed
 
 func _physics_process(delta: float) -> void:
 	if player:
@@ -22,5 +24,6 @@ func _physics_process(delta: float) -> void:
 		
 		move_and_slide()
 		
-		# Rotation has been removed per your request. 
-		# The enemy will move towards the player while remaining upright.
+func _exit_tree():
+	# If the enemy is freed for any reason, let the manager know
+	removed.emit()

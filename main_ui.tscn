@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ddvegdfskx2a2"]
 
 [ext_resource type="FontFile" uid="uid://dvw6pgbk4cmae" path="res://fonts/Special_Gothic_Condensed_One/SpecialGothicCondensedOne-Regular.ttf" id="1_2ppmm"]
+[ext_resource type="Script" uid="uid://bkn7i51u10jxr" path="res://wave_label.gd" id="2_w37m7"]
 
 [sub_resource type="Theme" id="Theme_w37m7"]
 default_font = ExtResource("1_2ppmm")
@@ -29,6 +30,7 @@ theme_override_fonts/font = ExtResource("1_2ppmm")
 theme_override_font_sizes/font_size = 50
 text = "Enemies are coming.."
 horizontal_alignment = 1
+script = ExtResource("2_w37m7")
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=1331961536]
 layout_mode = 0
