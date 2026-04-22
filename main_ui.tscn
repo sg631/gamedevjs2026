@@ -6,6 +6,17 @@
 [sub_resource type="Theme" id="Theme_w37m7"]
 default_font = ExtResource("1_2ppmm")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w37m7"]
+bg_color = Color(0.12941177, 0.13333334, 0.13725491, 1)
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktt6o"]
+bg_color = Color(0.18070132, 0.1888504, 0.1936357, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+expand_margin_top = 7.0
+
 [node name="UI" type="Control" unique_id=685042840]
 layout_mode = 3
 anchors_preset = 15
@@ -39,6 +50,8 @@ offset_top = 196.0
 offset_right = 289.0
 offset_bottom = 466.0
 theme_override_fonts/font = ExtResource("1_2ppmm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_w37m7")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_ktt6o")
 current_tab = 0
 
 [node name="Structures" type="Control" parent="TabContainer" unique_id=1734622808]

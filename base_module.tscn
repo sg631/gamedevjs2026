@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://durdboohjsun5"]
+
+[ext_resource type="Script" uid="uid://c5e5xfy6ngvqb" path="res://base_module.gd" id="1_bvxgj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bvxgj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvxgj"]
+
+[node name="BaseModule" type="Node2D" unique_id=1963584105]
+script = ExtResource("1_bvxgj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1552579534]
+sprite_frames = SubResource("SpriteFrames_bvxgj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=221357277]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=142807842]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1918781808]
+shape = SubResource("RectangleShape2D_bvxgj")
