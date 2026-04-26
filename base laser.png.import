@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c60u6tilsykdk"
-path="res://.godot/imported/module_tilemap.png-4fb82dbab961bbb3eb1405f335a53733.ctex"
+uid="uid://bdi6wj2n7ej8"
+path="res://.godot/imported/base laser.png-e175046793c96e7e9452cf2a8f066cc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://module_tilemap.png"
-dest_files=["res://.godot/imported/module_tilemap.png-4fb82dbab961bbb3eb1405f335a53733.ctex"]
+source_file="res://base laser.png"
+dest_files=["res://.godot/imported/base laser.png-e175046793c96e7e9452cf2a8f066cc0.ctex"]
 
 [params]
 
