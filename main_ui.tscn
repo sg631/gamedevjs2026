@@ -2,11 +2,19 @@
 
 [ext_resource type="FontFile" uid="uid://dvw6pgbk4cmae" path="res://fonts/Special_Gothic_Condensed_One/SpecialGothicCondensedOne-Regular.ttf" id="1_2ppmm"]
 [ext_resource type="Script" uid="uid://bkn7i51u10jxr" path="res://wave_label.gd" id="2_w37m7"]
+[ext_resource type="Texture2D" uid="uid://dlleemce0t0n1" path="res://player_front.png" id="3_ktt6o"]
+[ext_resource type="Script" uid="uid://c176eye7wylcq" path="res://panel_hover.gd" id="4_4uoxc"]
+[ext_resource type="FontFile" uid="uid://b2s84i8gi7rd1" path="res://fonts/Special_Gothic_Expanded_One/SpecialGothicExpandedOne-Regular.ttf" id="5_llbac"]
+[ext_resource type="Script" uid="uid://0cf1ghyktse0" path="res://healthbar.gd" id="6_n1q3t"]
 
 [sub_resource type="Theme" id="Theme_w37m7"]
 default_font = ExtResource("1_2ppmm")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w37m7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
 bg_color = Color(0.12941177, 0.13333334, 0.13725491, 1)
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
@@ -16,6 +24,39 @@ bg_color = Color(0.18070132, 0.1888504, 0.1936357, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 expand_margin_top = 7.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uoxc"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.12941177, 0.13333334, 0.13725491, 1)
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1q3t"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.07058824, 0.07450981, 0.078431375, 1)
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llbac"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.12941177, 0.13333334, 0.13725491, 1)
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.18039216, 0.1882353, 0.19215687, 1)
+border_blend = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_n1q3t"]
+font = ExtResource("5_llbac")
+font_size = 14
 
 [node name="UI" type="Control" unique_id=685042840]
 layout_mode = 3
@@ -43,22 +84,171 @@ text = "Enemies are coming.."
 horizontal_alignment = 1
 script = ExtResource("2_w37m7")
 
-[node name="TabContainer" type="TabContainer" parent="." unique_id=1331961536]
-layout_mode = 0
-offset_left = 58.0
-offset_top = 196.0
-offset_right = 289.0
-offset_bottom = 466.0
+[node name="InventoryMenu" type="TabContainer" parent="." unique_id=1032649248]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -135.0
+offset_bottom = 135.0
+grow_horizontal = 0
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_2ppmm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_w37m7")
 theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_ktt6o")
 current_tab = 0
 
-[node name="Structures" type="Control" parent="TabContainer" unique_id=1734622808]
+[node name="Modules" type="ScrollContainer" parent="InventoryMenu" unique_id=1384521251]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w37m7")
 metadata/_tab_index = 0
 
-[node name="Modules" type="Control" parent="TabContainer" unique_id=936349254]
+[node name="GridContainer" type="GridContainer" parent="InventoryMenu/Modules" unique_id=364606719]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 5
+
+[node name="TextureRect" type="TextureRect" parent="InventoryMenu/Modules/GridContainer" unique_id=2084217388]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ktt6o")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="InventoryMenu/Modules/GridContainer" unique_id=1694581713]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ktt6o")
+expand_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="InventoryMenu/Modules/GridContainer" unique_id=2110858168]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ktt6o")
+expand_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="InventoryMenu/Modules/GridContainer" unique_id=133584739]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ktt6o")
+expand_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="InventoryMenu/Modules/GridContainer" unique_id=1142156401]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ktt6o")
+expand_mode = 3
+
+[node name="TextureRect6" type="TextureRect" parent="InventoryMenu/Modules/GridContainer" unique_id=28206902]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ktt6o")
+expand_mode = 3
+
+[node name="Resources" type="ScrollContainer" parent="InventoryMenu" unique_id=1375451608]
 visible = false
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w37m7")
 metadata/_tab_index = 1
+
+[node name="GridContainer" type="GridContainer" parent="InventoryMenu/Resources" unique_id=697055861]
+layout_mode = 2
+
+[node name="BuildMenu" type="TabContainer" parent="." unique_id=1334181783]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -135.0
+offset_right = 208.0
+offset_bottom = 135.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_2ppmm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_4uoxc")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_ktt6o")
+current_tab = 0
+
+[node name="Structures" type="ScrollContainer" parent="BuildMenu" unique_id=602043622]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n1q3t")
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BuildMenu/Structures" unique_id=1628899160]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="BuildMenu/Structures/VBoxContainer" unique_id=1511095338]
+custom_minimum_size = Vector2(208, 65)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_llbac")
+script = ExtResource("4_4uoxc")
+
+[node name="Title" type="Label" parent="BuildMenu/Structures/VBoxContainer/PanelContainer" unique_id=403993279]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Drill"
+label_settings = SubResource("LabelSettings_n1q3t")
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="BuildMenu/Structures/VBoxContainer/PanelContainer" unique_id=1218983627]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("5_llbac")
+theme_override_font_sizes/font_size = 6
+text = "Buy"
+
+[node name="TextureRect" type="TextureRect" parent="BuildMenu/Structures/VBoxContainer/PanelContainer" unique_id=2080567725]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_ktt6o")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Modules" type="ScrollContainer" parent="BuildMenu" unique_id=1918227116]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w37m7")
+metadata/_tab_index = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1737391711]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.012
+anchor_top = 0.94000006
+anchor_right = 0.17300001
+anchor_bottom = 0.97400004
+offset_left = 0.17599964
+offset_top = -0.12005615
+offset_right = -0.29600525
+offset_bottom = -0.15203857
+color = Color(0.12298488, 0.12298488, 0.12298488, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect" unique_id=1846521079]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0450001
+offset_right = -73.0
+offset_bottom = 0.010005951
+color = Color(0.5591777, 0.8048715, 0.050251603, 1)
+script = ExtResource("6_n1q3t")
+
+[connection signal="mouse_entered" from="BuildMenu/Structures/VBoxContainer/PanelContainer" to="BuildMenu/Structures/VBoxContainer/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BuildMenu/Structures/VBoxContainer/PanelContainer" to="BuildMenu/Structures/VBoxContainer/PanelContainer" method="_on_mouse_exited"]

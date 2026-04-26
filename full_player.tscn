@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dlleemce0t0n1" path="res://player_front.png" id="2_s3nur"]
 [ext_resource type="Texture2D" uid="uid://ccpeyxsuhqyw1" path="res://player_back.png" id="4_l74wa"]
 [ext_resource type="Script" uid="uid://cl84tq7mfi25t" path="res://grid_manager.gd" id="5_l74wa"]
+[ext_resource type="Script" uid="uid://bumhj3f0116ua" path="res://ModuleData.gd" id="6_lvgbx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tx6sp"]
 atlas = ExtResource("1_jfuqs")
@@ -54,6 +55,22 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvgbx"]
 size = Vector2(16, 16)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_lvgbx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s3nur")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_lvgbx"]
+script = ExtResource("6_lvgbx")
+sprite_frames = SubResource("SpriteFrames_lvgbx")
+metadata/_custom_type_script = "uid://bumhj3f0116ua"
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=893198912]
 motion_mode = 1
 script = ExtResource("1_tx6sp")
@@ -72,7 +89,6 @@ rotation_smoothing_enabled = true
 
 [node name="ModuleGrid" type="Node2D" parent="." unique_id=986840060]
 script = ExtResource("5_l74wa")
+debug_module = SubResource("Resource_lvgbx")
 
-[node name="GhostPreview" type="Sprite2D" parent="ModuleGrid" unique_id=1455864899]
-modulate = Color(1, 1, 1, 0.5019608)
-texture = ExtResource("4_l74wa")
+[node name="GhostPreview" type="AnimatedSprite2D" parent="ModuleGrid" unique_id=452890740]

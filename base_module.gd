@@ -8,18 +8,15 @@ var data: ModuleData:
 		_update_visuals()
 
 var grid_pos: Vector2i
-
 var neighbors: Dictionary = {
-	Vector2i.UP: null,
-	Vector2i.DOWN: null,
-	Vector2i.LEFT: null,
-	Vector2i.RIGHT: null
+	Vector2i.UP: null, Vector2i.DOWN: null, 
+	Vector2i.LEFT: null, Vector2i.RIGHT: null
 }
 
-# --- Signals ---
 signal removed(pos: Vector2i, module_data: ModuleData)
 
 # --- Lifecycle ---
+
 func _ready() -> void:
 	_update_visuals()
 	
@@ -29,34 +26,46 @@ func _ready() -> void:
 	tween.tween_property(self, "scale", Vector2.ONE, 0.2)\
 		.set_trans(Tween.TRANS_BACK)\
 		.set_ease(Tween.EASE_OUT)
+	
+	# EXECUTE CUSTOM CODE BASED ON ID
+	_initialize_custom_logic()
 
 func _exit_tree() -> void:
-	# Emit the signal for the inventory system to refund the item
 	removed.emit(grid_pos, data)
 
-# --- Logic ---
+# --- Visuals ---
 
-## Called by GridManager. Updates references and checks for isolation.
+func _update_visuals() -> void:
+	if not is_inside_tree() or not data: return
+	
+	var sprite = get_node_or_null("AnimatedSprite2D")
+	if sprite and data.sprite_frames:
+		sprite.sprite_frames = data.sprite_frames
+		sprite.play("default") # Ensure your SpriteFrames has a "default" animation
+	elif not data.sprite_frames:
+		push_warning("Module %s is missing SpriteFrames!" % data.id)
+
+# --- Custom Logic System ---
+
+func _initialize_custom_logic() -> void:
+	match data.id:
+		"laser_basic":
+			print("Logic: Setting up basic laser cooldowns...")
+		"energy_gen":
+			print("Logic: Connecting to power grid...")
+		"shield_battery":
+			# You can even call functions on neighbors here
+			pass
+
 func update_neighbors(manager_grid: Dictionary) -> void:
 	var has_any_neighbor: bool = false
-	
 	for direction in neighbors.keys():
 		var target_coords = grid_pos + direction
-		
-		# Check if the neighbor is the Player Core (0,0) or another module
 		if target_coords == Vector2i.ZERO or manager_grid.has(target_coords):
 			neighbors[direction] = manager_grid.get(target_coords)
 			has_any_neighbor = true
 		else:
 			neighbors[direction] = null
 	
-	# If this isn't the core and it has lost all connections, it falls off
 	if not has_any_neighbor and grid_pos != Vector2i.ZERO:
 		queue_free()
-
-## Updates the Sprite2D texture based on the ModuleData Resource
-func _update_visuals() -> void:
-	if not is_inside_tree(): return
-	
-	if data and has_node("Sprite2D"):
-		$Sprite2D.texture = data.texture

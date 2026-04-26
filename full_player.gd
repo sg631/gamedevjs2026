@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 100
+@export var health: int = 100
 
 func _physics_process(delta: float) -> void:
 	var direction := Vector2(
