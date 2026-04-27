@@ -7,6 +7,10 @@ var data: ModuleData:
 		data = value
 		_update_visuals()
 
+@export var props: Dictionary = {
+	"melee": false
+}
+
 var grid_pos: Vector2i
 var neighbors: Dictionary = {
 	Vector2i.UP: null, Vector2i.DOWN: null, 
@@ -49,13 +53,13 @@ func _update_visuals() -> void:
 
 func _initialize_custom_logic() -> void:
 	match data.id:
-		"laser_basic":
-			print("Logic: Setting up basic laser cooldowns...")
+		"sword":
+			props.melee = true
 		"energy_gen":
+			props.melee = false
 			print("Logic: Connecting to power grid...")
-		"shield_battery":
-			# You can even call functions on neighbors here
-			pass
+		"shield":
+			$/root/MainScene/Player.module_stats.healths += 1
 
 func update_neighbors(manager_grid: Dictionary) -> void:
 	var has_any_neighbor: bool = false
@@ -69,3 +73,34 @@ func update_neighbors(manager_grid: Dictionary) -> void:
 	
 	if not has_any_neighbor and grid_pos != Vector2i.ZERO:
 		queue_free()
+
+func _on_body_entered(body):
+	if props.melee:
+		# 1. Safety check for the property
+		if "health" in body && body.name != "Player":
+			body.health -= 50
+			runanim_use()
+			
+
+func runanim_use():
+	var tween = create_tween()
+	
+	# Flash Color (e.g., flash to pure White then back to Normal)
+	# Note: modulate default is Color.WHITE (1,1,1,1)
+	tween.tween_property(self, "modulate", Color.WHITE, 0.1).from(Color(2, 2, 2, 1)) # Over-bright flash
+	
+	# Pulse Scale (Scale up to 1.2x then back to 1.0)
+	# Using parallel() so it happens at the same time as the color flash
+	tween.parallel().tween_property(self, "scale", Vector2(1.2, 1.2), 0.1)\
+		.set_trans(Tween.TRANS_QUAD)\
+		.set_ease(Tween.EASE_OUT)
+	
+	# Reset scale back to original size
+	tween.tween_property(self, "scale", Vector2.ONE, 0.1)
+	
+	# Reset color back to normal
+	tween.parallel().tween_property(self, "modulate", Color.WHITE, 0.1)
+
+
+func _on_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.

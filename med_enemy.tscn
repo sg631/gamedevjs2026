@@ -1,15 +1,15 @@
-[gd_scene format=3 uid="uid://bmd7v3nqo8kcq"]
+[gd_scene format=3 uid="uid://je3nihwyesk0"]
 
-[ext_resource type="Texture2D" uid="uid://dlleemce0t0n1" path="res://player_front.png" id="1_naotq"]
-[ext_resource type="Script" uid="uid://by4lccsxgheml" path="res://basic_enemy.gd" id="1_rwafm"]
-[ext_resource type="Script" uid="uid://bumhj3f0116ua" path="res://ModuleData.gd" id="2_t1tcq"]
-[ext_resource type="Texture2D" uid="uid://lborkq78daam" path="res://base blade.png" id="3_05t60"]
+[ext_resource type="Script" uid="uid://by4lccsxgheml" path="res://basic_enemy.gd" id="1_0gk7p"]
+[ext_resource type="Script" uid="uid://bumhj3f0116ua" path="res://ModuleData.gd" id="2_6rt0p"]
+[ext_resource type="Texture2D" uid="uid://bx75egas1gch2" path="res://base shield.png" id="3_0gk7p"]
+[ext_resource type="Texture2D" uid="uid://dlleemce0t0n1" path="res://player_front.png" id="4_1elie"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v2wxn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_05t60")
+"texture": ExtResource("3_0gk7p")
 }],
 "loop": true,
 "name": &"default",
@@ -17,10 +17,9 @@ animations = [{
 }]
 
 [sub_resource type="Resource" id="Resource_hhlmc"]
-script = ExtResource("2_t1tcq")
-id = "sword"
-display_name = "Sword"
-collision = false
+script = ExtResource("2_6rt0p")
+id = "shield"
+display_name = "Shield"
 sprite_frames = SubResource("SpriteFrames_v2wxn")
 metadata/_custom_type_script = "uid://bumhj3f0116ua"
 
@@ -28,7 +27,7 @@ metadata/_custom_type_script = "uid://bumhj3f0116ua"
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_naotq")
+"texture": ExtResource("4_1elie")
 }],
 "loop": true,
 "name": &"placeholder",
@@ -39,11 +38,12 @@ animations = [{
 size = Vector2(16, 16)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=2052612469]
-modulate = Color(1, 0.49600005, 0.37, 0.5882353)
-collision_mask = 2
+modulate = Color(0, 0.77887696, 0.5894999, 0.5882353)
+collision_layer = 3
+collision_mask = 3
 collision_priority = 2.0
 motion_mode = 1
-script = ExtResource("1_rwafm")
+script = ExtResource("1_0gk7p")
 ModuleType = SubResource("Resource_hhlmc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1233333154]

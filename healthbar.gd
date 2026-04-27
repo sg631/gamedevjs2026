@@ -8,4 +8,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	size.x = ($/root/MainScene/Player.health/100.0) * get_parent().size.x
+	size.x = ($/root/MainScene/Player.health/float($/root/MainScene/Player.maxhealth)) * get_parent().size.x

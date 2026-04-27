@@ -1,10 +1,20 @@
 [gd_scene format=3 uid="uid://durdboohjsun5"]
 
 [ext_resource type="Script" uid="uid://c5e5xfy6ngvqb" path="res://base_module.gd" id="1_bvxgj"]
+[ext_resource type="Texture2D" uid="uid://dlleemce0t0n1" path="res://player_front.png" id="3_tbvn6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bvxgj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_73h5k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tbvn6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="BaseModule" type="Node2D" unique_id=1963584105]
 script = ExtResource("1_bvxgj")
@@ -18,3 +28,6 @@ shape = SubResource("RectangleShape2D_bvxgj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=751959526]
 sprite_frames = SubResource("SpriteFrames_73h5k")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]

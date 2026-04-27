@@ -71,7 +71,6 @@ animations = [{
 script = ExtResource("6_lvgbx")
 id = "sword"
 display_name = "Sword"
-collision = false
 sprite_frames = SubResource("SpriteFrames_1i5cd")
 metadata/_custom_type_script = "uid://bumhj3f0116ua"
 
